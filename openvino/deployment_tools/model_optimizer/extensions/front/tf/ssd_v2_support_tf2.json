@@ -1,0 +1,48 @@
+[
+    {
+        "custom_attributes": {
+        },
+        "id": "ObjectDetectionAPIPreprocessorTF2Replacement",
+        "instances": [
+            ".*StatefulPartitionedCall/Preprocessor/"
+        ],
+        "match_kind": "scope",
+        "inputs": [
+        ],
+        "outputs": [
+            {
+                "node": "sub$",
+                "port": 0
+            }
+        ]
+    },
+    {
+        "custom_attributes": {
+            "code_type": "caffe.PriorBoxParameter.CENTER_SIZE",
+            "pad_mode": "caffe.ResizeParameter.CONSTANT",
+            "resize_mode": "caffe.ResizeParameter.WARP",
+            "clip_before_nms": false,
+            "clip_after_nms": true
+        },
+        "id": "ObjectDetectionAPISSDPostprocessorTF2Replacement",
+        "include_inputs_to_sub_graph": true,
+        "include_outputs_to_sub_graph": true,
+        "instances": {
+            "end_points": [
+                "Identity",
+                "Identity_1",
+                "Identity_2",
+                "Identity_3",
+                "Identity_4",
+                "Identity_5",
+                "Identity_6",
+                "Identity_7"
+            ],
+            "start_points": [
+                "StatefulPartitionedCall/Postprocessor/raw_box_encodings",
+                "StatefulPartitionedCall/Postprocessor/scale_logits"
+            ]
+        },
+        "match_kind": "points"
+    }
+]
